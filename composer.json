@@ -1,7 +1,7 @@
 {
     "name": "eviweb/fuelphp-multihost",
     "type": "library",
-    "description": "Composer Wrapper for PHP 5.3",
+    "description": "Multi apps support for FuelPHP",
     "keywords": ["fuel","fuelphp", "multihost"],
     "homepage": "https://github.com/eviweb/fuelphp-multihost",
     "license": "MIT",
