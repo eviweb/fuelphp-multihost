@@ -33,6 +33,7 @@ namespace evidev\fuelphp\multihost\external;
 
 /**
  * linux external command
+ * 
  * @package     multihost
  * @author      Eric VILLARD <dev@eviweb.fr>
  * @copyright	(c) 2013 Eric VILLARD <dev@eviweb.fr>
@@ -74,7 +75,7 @@ final class LinuxCommand implements \evidev\fuelphp\multihost\external\Command
 	}
 	
 	/**
-	 * @see \evidev\fuelphp\multihost\external\Command::exists
+	 * {@inheritdoc}
 	 */
 	public function exists()
 	{
@@ -82,7 +83,7 @@ final class LinuxCommand implements \evidev\fuelphp\multihost\external\Command
 	}
 	
 	/**
-	 * @see \evidev\fuelphp\multihost\external\Command::run
+	 * {@inheritdoc}
 	 */
 	public function run($args = '')
 	{
