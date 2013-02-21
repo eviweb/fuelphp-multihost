@@ -111,4 +111,28 @@ class LinuxCommandTest extends \PHPUnit_Framework_TestCase
 			strtolower(LinuxCommand::create($this->command)->run(array('-n', '-o')))
 		);
 	}
+	
+	/**
+	 * @covers \evidev\fuelphp\multihost\external\LinuxCommand::run
+	 * @expectedException \evidev\fuelphp\multihost\external\InvalidCommandException
+	 */
+	public function testRunThrowsException()
+	{
+		LinuxCommand::create("unknown_command")->run();
+	}
+	
+	/**
+	 * @covers \evidev\fuelphp\multihost\external\LinuxCommand::getPath
+	 */
+	public function testGetPath()
+	{
+		$this->assertEquals(
+			'/bin/'.$this->command,
+			LinuxCommand::create($this->command)->getPath()
+		);
+		$this->assertEquals(
+			"",
+			LinuxCommand::create("unknown_command")->getPath()
+		);
+	}
 }

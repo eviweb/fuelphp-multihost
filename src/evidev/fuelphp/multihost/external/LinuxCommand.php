@@ -49,6 +49,13 @@ final class LinuxCommand implements \evidev\fuelphp\multihost\external\Command
 	private $name;
 	
 	/**
+	 * command full path
+	 * 
+	 * @var string
+	 */
+	private $path;
+	
+	/**
 	 * constructor
 	 * 
 	 * @param string $name	command name
@@ -79,7 +86,7 @@ final class LinuxCommand implements \evidev\fuelphp\multihost\external\Command
 	 */
 	public function exists()
 	{
-		return shell_exec('which '.$this->name) != '';
+		return $this->getPath() != '';
 	}
 	
 	/**
@@ -87,10 +94,28 @@ final class LinuxCommand implements \evidev\fuelphp\multihost\external\Command
 	 */
 	public function run($args = '')
 	{
+		if (!$this->exists())
+		{
+			throw new InvalidCommandException('Command not found.');
+		}
 		if (is_array($args))
 		{
 			$args = join(' ', $args);
 		}
-		return trim(shell_exec('`which '.$this->name.'` '.$args));
+		return trim(shell_exec($this->getPath().' '.$args));
+	}
+	
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getPath()
+	{
+		if (!isset($this->path))
+		{
+			$this->path = file_exists($this->name) ?
+				'.'.DIRECTORY_SEPARATOR.$this->name :
+				trim(shell_exec('which '.$this->name));
+		}		
+		return $this->path;
 	}
 }

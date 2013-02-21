@@ -33,35 +33,14 @@
 namespace evidev\fuelphp\multihost\external;
 
 /**
- * external command interface
+ * exception for invalid command
  * 
  * @package     multihost
  * @author      Eric VILLARD <dev@eviweb.fr>
  * @copyright	(c) 2013 Eric VILLARD <dev@eviweb.fr>
  * @license     http://opensource.org/licenses/MIT MIT License
  */
-interface Command {
-	/**
-	 * checks if the command exists
-	 * 
-	 * @return boolean	returns true if it exists, false otherwise
-	 */
-	function exists();
+class InvalidCommandException extends \Exception
+{
 	
-	/**
-	 * runs the command
-	 * 
-	 * @param mixed $args	command arguments as string or indexed array
-	 * @return string	returns the command output
-	 * @throws InvalidCommandException
-	 */
-	function run($args = '');
-	
-	/**
-	 * gets the command paths
-	 * 
-	 * @return string	returns the path of the command if it exists, 
-	 *			empty string otherwise
-	 */
-	function getPath();
 }
