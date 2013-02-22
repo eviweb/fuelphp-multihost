@@ -66,8 +66,11 @@ class LinuxCommandTest extends \PHPUnit_Framework_TestCase
 	public function testCreate()
 	{
 		$expected = '\\evidev\\fuelphp\\multihost\\external\\LinuxCommand';
-		$this->assertInstanceOf($expected, LinuxCommand::create($this->command));
+		$lcmd = LinuxCommand::create($this->command);
+		$this->assertInstanceOf($expected, $lcmd);
+		$this->assertAttributeEquals($this->command, 'name', $lcmd);
 	}
+
 	
 	/**
 	 * @covers \evidev\fuelphp\multihost\external\LinuxCommand::exists
