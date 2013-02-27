@@ -62,6 +62,7 @@ class LinuxCommandTest extends \PHPUnit_Framework_TestCase
 	
 	/**
 	 * @covers \evidev\fuelphp\multihost\external\LinuxCommand::create
+	 * @covers \evidev\fuelphp\multihost\external\LinuxCommand::__construct
 	 */
 	public function testCreate()
 	{
